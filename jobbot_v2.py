@@ -127,8 +127,10 @@ def get_gmail_jobs():
                         msg = email.message_from_bytes(response[1])
                         subject = clean_subject(msg["Subject"])
 
-                        if match_keywords(subject):
-                            results.append(f"📩 {source}: {subject}")
+                        score = match_keywords(subject)
+                    if score >= 2:
+                        results.append(f"📩 [{score}] {source}: {subject}")
+                  
 
         mail.logout()
 
