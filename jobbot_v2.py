@@ -262,7 +262,7 @@ def build_report():
     for job in all_jobs[:3]:
         text += f"{job}\n\n"
 
-     return text
+    return text
 
 
 # =========================
