@@ -55,8 +55,24 @@ def clean_subject(subject):
 
 def match_keywords(text):
     text = text.lower()
-    return any(word in text for word in KEYWORDS)
 
+    strong_keywords = [
+        "power bi", "sql", "data analyst", "business analyst",
+        "reporting", "dashboard", "excel", "automation",
+        "python", "power query", "tableau"
+    ]
+
+    score = 0
+
+    for word in strong_keywords:
+        if word in text:
+            score += 2
+
+    for word in KEYWORDS:
+        if word in text:
+            score += 1
+
+    return score >= 2
 
 # =========================
 # GMAIL SECTION
