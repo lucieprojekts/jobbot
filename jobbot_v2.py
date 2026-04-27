@@ -255,7 +255,14 @@ def build_report():
         text += "💸 Freelancer:\n"
         text += "\n\n".join(freelancer_jobs)
 
-    return text
+    text += "\n🔥 Top priority:\n"
+
+    all_jobs = gmail_jobs + remote_jobs + freelancer_jobs
+
+    for job in all_jobs[:3]:
+        text += f"{job}\n\n"
+
+     return text
 
 
 # =========================
