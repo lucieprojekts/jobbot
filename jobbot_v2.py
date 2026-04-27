@@ -74,6 +74,30 @@ def match_keywords(text):
 
     return score >= 2
 
+def score_job(text):
+    text = text.lower()
+    score = 0
+
+    good = [
+        "remote", "junior", "entry level",
+        "power bi", "sql", "excel",
+        "automation", "dashboard", "python"
+    ]
+
+    bad = [
+        "senior", "lead", "manager", "director",
+        "principal", "5+ years", "7+ years"
+    ]
+
+    for word in good:
+        if word in text:
+            score += 2
+
+    for word in bad:
+        if word in text:
+            score -= 3
+
+    return score
 # =========================
 # GMAIL SECTION
 # =========================
