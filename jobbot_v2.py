@@ -43,8 +43,9 @@ KEYWORDS = [
 def send_telegram(text):
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
     data = {"chat_id": CHAT_ID, "text": text}
-    requests.post(url, data=data)
-
+    r = requests.post(url, data=data)
+    print("STATUS:", r.status_code)
+    print("RESPONSE:", r.text)
 
 def clean_subject(subject):
     decoded, encoding = decode_header(subject)[0]
