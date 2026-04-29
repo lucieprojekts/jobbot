@@ -240,36 +240,43 @@ def get_freelancer_jobs():
 # MAIN REPORT
 # =========================
 def build_report():
-    text = "☀️ Dobré ráno Lucie!\n"
-    text += "━━━━━━━━━━━━━━\n"
-    text += "🎯 Denní přehled příležitostí\n\n"
+    text = "☀️ Dobré ráno Lucie!\n\n"
+    text += "Dnes nic zajímavého. Hlídám dál.\n"
+    text += "━━━━━━━━━━━━━━\n\n"
 
     gmail_jobs = get_gmail_jobs()
-    if gmail_jobs:
-        text += "📩 Gmail nabídky:\n"
-        text += "\n".join(gmail_jobs)
-        text += "\n\n"
-
     remote_jobs = get_remoteok_jobs()
-    if remote_jobs:
-        text += "🌍 Remote práce:\n"
-        text += "\n\n".join(remote_jobs)
-        text += "\n\n"
-
     freelancer_jobs = get_freelancer_jobs()
+
+    # FREELANCER
     if freelancer_jobs:
-        text += "💸 Freelancer:\n"
-        text += "\n\n".join(freelancer_jobs)
+        text += "💸 Freelancer zakázky:\n\n"
+        for i, job in enumerate(freelancer_jobs, 1):
+            text += f"{i}️⃣ {job}\n\n"
 
-    text += "\n🔥 Top priority:\n"
+    # REMOTE
+    if remote_jobs:
+        text += "🚀 StartupJobs:\n\n"
+        for i, job in enumerate(remote_jobs, 1):
+            text += f"{i}️⃣ {job}\n\n"
 
-    all_jobs = gmail_jobs + remote_jobs + freelancer_jobs
+    # GMAIL
+    if gmail_jobs:
+        text += "📩 LinkedIn z Gmailu:\n\n"
+        for i, job in enumerate(gmail_jobs, 1):
+            text += f"{i}️⃣ {job}\n"
 
-    for job in all_jobs[:3]:
-        text += f"{job}\n\n"
+        text += "\n"
+
+    # TOP PRIORITY
+    all_jobs = freelancer_jobs + remote_jobs + gmail_jobs
+
+    if all_jobs:
+        text += "━━━━━━━━━━━━━━\n"
+        text += "🔥 Top priority:\n\n"
+        text += all_jobs[0]
 
     return text
-
 
 # =========================
 # RUN
