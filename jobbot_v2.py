@@ -15,7 +15,10 @@ TOKEN = os.getenv("BOT_TOKEN")
 CHAT_ID = os.getenv("CHAT_ID")
 EMAIL_USER = os.getenv("EMAIL_USER")
 EMAIL_PASS = os.getenv("EMAIL_PASS")
-
+print("TOKEN loaded:", TOKEN is not None)
+print("CHAT_ID loaded:", CHAT_ID is not None)
+print("EMAIL_USER loaded:", EMAIL_USER is not None)
+print("EMAIL_PASS loaded:", EMAIL_PASS is not None)
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 KEYWORDS = [
