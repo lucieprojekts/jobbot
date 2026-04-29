@@ -261,13 +261,15 @@ def build_report():
             text += f"{i}️⃣ {job}\n\n"
 
     # GMAIL
-    if gmail_jobs:
         text += "📩 LinkedIn z Gmailu:\n\n"
+
+    if gmail_jobs:
         for i, job in enumerate(gmail_jobs, 1):
-            text += f"{i}️⃣ {job}\n"
+        text += f"{i}️⃣ {job}\n"
+    else:
+        text += "Dnes nic nového.\n"
 
         text += "\n"
-
     # TOP PRIORITY
     all_jobs = freelancer_jobs + remote_jobs + gmail_jobs
 
