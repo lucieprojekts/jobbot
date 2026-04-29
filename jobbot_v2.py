@@ -265,7 +265,7 @@ def build_report():
 
     if gmail_jobs:
         for i, job in enumerate(gmail_jobs, 1):
-        text += f"{i}️⃣ {job}\n"
+            text += f"{i}️⃣ {job}\n"
     else:
         text += "Dnes nic nového.\n"
 
