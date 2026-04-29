@@ -9,10 +9,12 @@ from email.header import decode_header
 # =========================
 # SETTINGS
 # =========================
-TOKEN = "YOUR_TOKEN"
-CHAT_ID = "YOUR_CHAT_ID"
-EMAIL_USER = "YOUR_EMAIL"
-EMAIL_PASS = "YOUR_APP_PASSWORD"
+import os
+
+TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
+EMAIL_USER = os.getenv("EMAIL_USER")
+EMAIL_PASS = os.getenv("EMAIL_PASS")
 
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
