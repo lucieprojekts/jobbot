@@ -261,7 +261,7 @@ def build_report():
             text += f"{i}️⃣ {job}\n\n"
 
     # GMAIL
-        text += "📩 LinkedIn z Gmailu:\n\n"
+    text += "📩 LinkedIn z Gmailu:\n\n"
 
     if gmail_jobs:
         for i, job in enumerate(gmail_jobs, 1):
