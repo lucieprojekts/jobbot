@@ -240,13 +240,20 @@ def get_freelancer_jobs():
 # MAIN REPORT
 # =========================
 def build_report():
+    
     text = "☀️ Dobré ráno Lucie!\n\n"
-    text += "Dnes nic zajímavého. Hlídám dál.\n"
-    text += "━━━━━━━━━━━━━━\n\n"
 
     gmail_jobs = get_gmail_jobs()
     remote_jobs = get_remoteok_jobs()
     freelancer_jobs = get_freelancer_jobs()
+
+    all_jobs = freelancer_jobs + remote_jobs + gmail_jobs
+
+    # 👉 Pokud NIC není → pošli jen info a konec
+    if not all_jobs:
+        return "☀️ Dobré ráno Lucie!\n\n🤖 Dnes nic zajímavého.\nHlídám dál."
+
+    text += "━━━━━━━━━━━━━━\n\n"
 
     # FREELANCER
     if freelancer_jobs:
@@ -261,25 +268,20 @@ def build_report():
             text += f"{i}️⃣ {job}\n\n"
 
     # GMAIL
-    text += "📩 LinkedIn z Gmailu:\n\n"
+    text += "📩 LinkedIn (Gmail):\n\n"
 
     if gmail_jobs:
         for i, job in enumerate(gmail_jobs, 1):
-            text += f"{i}️⃣ {job}\n"
+            text += f"{i}. {job}\n\n"
     else:
-        text += "Dnes nic nového.\n"
+        text += "Dnes nic nového.\n\n"
 
-        text += "\n"
     # TOP PRIORITY
-    all_jobs = freelancer_jobs + remote_jobs + gmail_jobs
-
-    if all_jobs:
-        text += "━━━━━━━━━━━━━━\n"
-        text += "🔥 Top priority:\n\n"
-        text += all_jobs[0]
+    text += "━━━━━━━━━━━━━━\n"
+    text += "🔥 Top priority:\n\n"
+    text += f"1️⃣ {all_jobs[0]}\n"
 
     return text
-
 # =========================
 # RUN
 # =========================
