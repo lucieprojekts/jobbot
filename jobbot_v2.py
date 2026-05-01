@@ -285,7 +285,21 @@ def build_report():
 # =========================
 # RUN
 # =========================
+from datetime import datetime
+
 if __name__ == "__main__":
-    report = build_report()
-    send_telegram(report)
-    print("Hotovo ✅")
+    try:
+        now = datetime.now().strftime("%d.%m.%Y %H:%M")
+
+        send_telegram(f"🚀 BOT START\n⏰ {now}")
+
+        report = build_report()
+        send_telegram(report)
+
+        send_telegram("✅ BOT OK")
+
+        print("Hotovo ✅")
+
+    except Exception as e:
+        send_telegram(f"❌ BOT ERROR:\n{str(e)}")
+        print(f"ERROR: {e}")
